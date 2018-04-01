@@ -4,6 +4,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.jenazads.fragmentactivity.Fragments.FirstFragment;
+import com.jenazads.fragmentactivity.Fragments.JenazadsFragment;
 import com.jenazads.fragmentactivity.Fragments.SecondFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -106,6 +108,7 @@ public class MainActivity extends AppCompatActivity
 
     public void ChangeFragment(View view){
 
+        clearBackStack();
         if(view == findViewById(R.id.btn_frg_1)){
             getSupportFragmentManager().beginTransaction()
                     .setCustomAnimations(R.anim.enter,R.anim.exit,R.anim.pop_enter,R.anim.pop_exit)
@@ -116,5 +119,11 @@ public class MainActivity extends AppCompatActivity
                     .setCustomAnimations(R.anim.enter,R.anim.exit,R.anim.pop_enter,R.anim.pop_exit)
                     .replace(R.id.fragment_place, new SecondFragment()).addToBackStack(null).commit();
         }
+    }
+
+    public void clearBackStack() {
+        JenazadsFragment.sDisableFragmentAnimations = true;
+        getSupportFragmentManager().popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        JenazadsFragment.sDisableFragmentAnimations = false;
     }
 }
