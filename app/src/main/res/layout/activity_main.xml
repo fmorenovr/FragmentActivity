@@ -1,43 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.jenazads.fragmentactivity.MainActivity">
-    <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <include
+        layout="@layout/app_bar_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        android:layout_height="match_parent" />
 
-            <Button
-                android:id="@+id/btn_frg_1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:onClick="ChangeFragment"
-                android:text="Fragment 1" />
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/activity_main_drawer" />
 
-            <Button
-                android:id="@+id/btn_frg_2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/btn_frg_1"
-                android:layout_below="@+id/btn_frg_1"
-                android:onClick="ChangeFragment"
-                android:text="Fragment 2" />
-        </RelativeLayout>
-        <FrameLayout
-            android:id="@+id/fragment_place"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></FrameLayout>
-
-    </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+</android.support.v4.widget.DrawerLayout>
